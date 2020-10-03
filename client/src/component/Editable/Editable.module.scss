@@ -1,0 +1,18 @@
+@import '../../assets/styles/mixins.scss';
+
+.editableBox {
+  border-radius: 3px;
+
+  .button {
+    @include transition-middle;
+    opacity: 0;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+  &:hover {
+    background-color: $gray-1;
+    .button {
+      opacity: 1;
+    }
+  }
+}
