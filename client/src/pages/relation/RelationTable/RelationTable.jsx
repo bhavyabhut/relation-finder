@@ -25,7 +25,7 @@ const initialColumns = [
     render: (text) => <OtherShowRelation otherRelationArr={text} />,
   },
 ];
-const ProjectTable = () => {
+const RelationTable = () => {
   const [columns, setColumns] = useState(initialColumns);
   const dispatch = useDispatch();
   const users = useSelector(RelationSelector.SelectUsers);
@@ -59,4 +59,4 @@ const ProjectTable = () => {
   );
 };
 
-export default ProjectTable;
+export default RelationTable;
