@@ -1,7 +1,5 @@
 import React from "react";
 import StatusLabel from "../../../component/OtherRealation";
-import { useSelector } from "react-redux";
-import RelationSelector from "../../../redux/relation/relationSelector";
 import RelationName from "./RelationName";
 
 const OtherShowRelation = ({ otherRelationArr }) => {
