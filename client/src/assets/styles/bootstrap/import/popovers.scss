@@ -1,0 +1,37 @@
+@import 'assets/styles/mixins';
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/* POPOVERS */
+
+.popover {
+  border-color: $border;
+  .popover-inner {
+    border-width: rem(8);
+    &:after {
+      border-width: rem(7);
+    }
+  }
+  &.left:before,
+  &.bs-tether-element-attached-left:before {
+    border-right-color: $border;
+  }
+  &.right:before,
+  &.bs-tether-element-attached-right:before {
+    border-left-color: $border;
+  }
+  &.top:before,
+  &.bs-tether-element-attached-top:before {
+    border-bottom-color: $border;
+  }
+  &.bottom:before,
+  &.bs-tether-element-attached-bottom:before {
+    border-top-color: $border;
+  }
+  .popover-title {
+    font-weight: 600;
+    background: $gray-1;
+    margin: -1px;
+    padding: rem(8) rem(15);
+    border-radius: 3px 3px 0 0;
+  }
+}

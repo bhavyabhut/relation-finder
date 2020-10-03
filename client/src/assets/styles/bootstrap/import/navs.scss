@@ -1,0 +1,92 @@
+@import 'assets/styles/mixins';
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/* NAVS */
+
+.nav {
+  .nav-link {
+    &.disabled {
+      opacity: 0.4;
+    }
+  }
+}
+
+.nav-pills {
+  .nav-link.active,
+  .show > .nav-link {
+    background: $primary;
+  }
+}
+
+.nav-tabs {
+  .nav-link {
+    &.active {
+      background: transparent;
+    }
+  }
+
+  &-noborder {
+    border-bottom: 0;
+  }
+
+  &-stretched {
+    align-items: stretch;
+    .nav-item {
+      display: flex;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-line {
+    .nav-item {
+      &:last-child {
+        .nav-link {
+          margin-right: 0;
+        }
+      }
+      &.show .nav-link {
+        border-color: transparent;
+      }
+    }
+
+    .nav-link {
+      padding-left: 0;
+      padding-right: 0;
+      margin-right: rem(20);
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+      }
+      &.active {
+        border-color: transparent;
+        position: relative;
+        color: $blue;
+        &:after {
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          content: '';
+          display: block;
+          height: 1px;
+          width: 100%;
+          background: $primary;
+        }
+      }
+    }
+    &-bold {
+      .nav-link {
+        &.active {
+          &:after {
+            height: 7px;
+            bottom: -4px;
+            border-radius: 7px;
+          }
+        }
+      }
+    }
+  }
+}

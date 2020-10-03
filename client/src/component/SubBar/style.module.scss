@@ -1,0 +1,102 @@
+@import '../../assets/styles/mixins.scss';
+
+
+.subbar {
+  background: transparent;
+  min-height: rem(50);
+  border-bottom: 1px solid $border;
+  padding: 0 rem(20);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.divider {
+  width: 1px;
+  background-color: $border;
+  align-self: stretch;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  font-size: rem(18);
+}
+
+.breadcrumb {
+  position: relative;
+  margin-right: rem(30);
+
+  &::after {
+    content: '-';
+    position: absolute;
+    right: rem(-18);
+    bottom: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.breadcrumbLink {
+  display: block;
+
+  &__current {
+    color: $black;
+    font-weight: 700;
+    pointer-events: none;
+  }
+}
+
+.amount {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.amountText {
+  font-size: rem(12);
+  color: $gray-4;
+  flex-shrink: 0;
+  margin-right: rem(15);
+  margin-bottom: 0;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.amountValue {
+  color: $black;
+  font-size: rem(18);
+  display: block;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.amountGraph {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.amountGraphItem {
+  margin-right: rem(6);
+  width: rem(5);
+  border-radius: 3px;
+  background-color: $blue;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

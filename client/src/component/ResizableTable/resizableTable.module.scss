@@ -1,0 +1,64 @@
+@import '../../assets/styles/mixins.scss';
+
+.resizableTable {
+  :global(.react-resizable) {
+    position: relative;
+    background-clip: padding-box;
+  }
+  &.pointerRow {
+    :global(.ant-table-row) {
+      cursor: pointer;
+    }
+  }
+  :global(.ant-table-body) {
+    overflow-x: auto !important;
+  }
+  &.autoColWidth {
+    table {
+      width: max-content !important;
+      min-width: auto !important;
+      overflow: hidden;
+    }
+
+    :global(.ant-table-wrapper) {
+      width: max-content;
+      max-width: 100%;
+    }
+    :global(.ant-table-title) {
+      width: 100%;
+    }
+    :global(.ant-table-content) {
+      width: max-content;
+      max-width: 100%;
+    }
+    :global(.ant-table) {
+      width: max-content;
+      max-width: 100%;
+    }
+    :local(.ant-table-row) {
+      width: max-content;
+      max-width: 100%;
+    }
+    :global(.react-resizable-handle) {
+      position: absolute;
+      width: 10px;
+      height: 100%;
+      bottom: 0;
+      right: -5px;
+      cursor: col-resize;
+      z-index: 1;
+    }
+  }
+}
+
+.row {
+  td {
+    padding: 8px 6px !important;
+  }
+  &:nth-child(odd) {
+    background-color: $gray-1;
+    td {
+      border-right: 1px solid white;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import 'assets/styles/mixins';
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/* CAROUSEL */
+
+.carousel-indicators {
+  li {
+    opacity: 0.5;
+    &.active {
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../assets/styles/mixins.scss';
+
+
+.sidebar {
+  z-index: 100;
+  top: 0;
+  right: 0;
+  display: flex;
+  height: 100%;
+  bottom: 0;
+  width: 0;
+  background: $white;
+  @include transition-slow();
+
+  &__toggled {
+    min-width: rem(510);
+
+    .border {
+      width: 6px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      align-self: stretch;
+      background-color: $gray-3;
+    }
+  }
+}

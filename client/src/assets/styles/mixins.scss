@@ -1,0 +1,82 @@
+// Colors
+$white: #fff;
+$black: #161537;
+$blue: #1b55e3;
+$blue-light: #3d6ee7;
+$gray-1: #f2f4f8;
+$gray-2: #e4e9f0;
+$gray-3: #dde2ec;
+$gray-4: #c3bedc;
+$gray-5: #aca6cc;
+$gray-6: #786fa4;
+$yellow: #ff0;
+$orange: #f2a654;
+$red: #f00;
+$pink: #fd3995;
+$purple: #652eff;
+
+$dark-1: #0e0d2c;
+$dark-2: #2a274d;
+
+$text: $gray-6;
+$border: $gray-2;
+
+// Accent colors
+$default: $gray-4;
+$primary: $blue;
+$secondary: #6a7a84;
+$success: #46be8a;
+$info: #0887c9;
+$warning: #f39834;
+$danger: #fb434a;
+$light: $gray-1;
+$dark: $black;
+
+// Font Family
+$base-font-family: 'Source Sans Pro', sans-serif;
+
+// Font Size
+$base-font-size: 15 !default;
+
+// Shadows
+$shadow: 0 0 40px -10px rgba($black, 0.2);
+$shadow-2: 0 4px 38px 0 rgba($black, 0.11), 0 0 21px 0 rgba($black, 0.05);
+$shadow-3: 0 0 100px -30px rgba(57, 55, 73, 0.3);
+$shadow-4: 0 4px 10px 0 rgba($black, 0.03), 0 0 10px 0 rgba($black, 0.02);
+$shadow-5: 0 0 40px -10px rgba($black, 0.4);
+$shadow-ant: 0 10px 35px -5px rgba(0, 0, 0, 0.15);
+
+// Convert value of rem() sass mixin function
+@function rem($px, $base: $base-font-size) {
+  @return #{floor(($px/$base) * 100) / 100}rem; // to REMs
+  // @return #{$px}px; // to PX's
+}
+
+// Transitions
+@mixin transition-bg() {
+  transition: background 0.2s ease-in-out;
+}
+@mixin transition-color() {
+  transition: color 0.2s ease-in-out;
+}
+@mixin transition-fast() {
+  transition: all 0.05s ease-in-out;
+}
+@mixin transition-middle() {
+  transition: all 0.1s ease-in-out;
+}
+@mixin transition-slow() {
+  transition: all 0.2s ease-in-out;
+}
+
+// Responsive utils
+$xxl-min-width: 1600px;
+$xxl-max-width: 1599px;
+$xl-min-width: 1200px;
+$xl-max-width: 1199px;
+$md-min-width: 992px;
+$md-max-width: 991px;
+$sm-min-width: 768px;
+$sm-max-width: 767px;
+$xs-min-width: 544px;
+$xs-max-width: 543px;
