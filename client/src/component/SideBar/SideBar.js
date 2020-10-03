@@ -4,7 +4,6 @@ import classNames from "classnames";
 import styles from "./SideBar.module.scss";
 
 const SideBar = ({ isOpen, children }) => {
-  console.log(isOpen, children);
   return (
     <div
       className={classNames(styles.sidebar, {

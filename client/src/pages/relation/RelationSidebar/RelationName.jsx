@@ -6,6 +6,6 @@ const RelationName = ({ id }) => {
   const relationName = useSelector((state) =>
     RelationSelector.SelectIdToName(state, id)
   );
-  return <div>{` of ${relationName?.name}`}</div>;
+  return ` of ${relationName?.name}`;
 };
 export default RelationName;

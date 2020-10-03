@@ -97,3 +97,29 @@ exports.postRelation = async (req, res, next) => {
     });
   }
 };
+
+exports.updateUser = async (req, res, next) => {
+  const { userId } = req.params;
+  const { directRelation } = req.body;
+  console.log(directRelation);
+  if (!userId)
+    res.status(400).json({
+      success: false,
+      data: { error: "Please enter user" },
+    });
+  try {
+    const user = await User.findById(userId);
+    if (user) {
+      user.directRelation = directRelation;
+      await user.save();
+      res.status(200).json({ success: true, user });
+    } else
+      res.status(400).json({ success: false, error: "No resources found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      success: false,
+      data: { error: "Server Error" },
+    });
+  }
+};

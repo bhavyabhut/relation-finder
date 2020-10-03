@@ -23,8 +23,7 @@ export async function runEffect(action, effect, ...args) {
     )
   );
   const model = await effect(...args);
-  console.log(model, `${actionType}_FINISHED`, "model che ");
-  const isError = !model.success;
+  const isError = !model?.success;
   dispatch(
     createAction(`${actionType}_FINISHED`, model.data || model, isError, {
       ...model.metadata,

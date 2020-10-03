@@ -8,12 +8,20 @@ import RelationAction from "../../../redux/relation/actions";
 import { timestampToLocale } from "../../../utilities/date";
 import OtherShowRelation from "./Other";
 import StatusLabel from "../../../component/OtherRealation";
+import Editable from "../../../component/Editable/Editable";
+import requestingSelector from "../../../redux/requesting/requestingSelector";
 
 const RelationSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const selectedUser = useSelector(RelationSelector.SelectSelectedUser);
-
+  const userUpdated = useSelector(
+    RelationSelector.SelectRelationUpdateFinished
+  );
+  const loading = useSelector((state) =>
+    requestingSelector(state, [RelationAction.UPDATE_DIRECT_RELATION])
+  );
   const unselectUser = () => dispatch(RelationAction.unselectSite());
   useEffect(() => {
     setIsOpen(false);
@@ -21,6 +29,9 @@ const RelationSidebar = () => {
       setIsOpen(true);
     }, 1);
   }, [selectedUser?._id]);
+  useEffect(() => {
+    if (userUpdated) setOpen(false);
+  }, [userUpdated]);
   return (
     <div className="pr-n3 py-3" style={{ height: "100%", zIndex: 1 }}>
       <SideBar isOpen={!!selectedUser} width={550}>
@@ -42,7 +53,27 @@ const RelationSidebar = () => {
                     <strong>Direct Relation: </strong>
                   </td>
                   <td className="text-dark">
-                    <StatusLabel status={selectedUser.directRelation} />
+                    <Editable
+                      loading={loading}
+                      onSubmit={(data) =>
+                        dispatch(
+                          RelationAction.updateUser({
+                            userId: selectedUser._id,
+                            user: {
+                              directRelation: data,
+                            },
+                          })
+                        )
+                      }
+                      onCancel={() => setOpen(false)}
+                      setActive={() => setOpen(true)}
+                      active={open}
+                      initialValue={
+                        selectedUser.directRelation || "enter relation"
+                      }
+                    >
+                      <StatusLabel status={selectedUser.directRelation} />
+                    </Editable>
                   </td>
                 </tr>
                 <tr className="mt-2">

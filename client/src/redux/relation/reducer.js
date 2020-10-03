@@ -6,6 +6,7 @@ const initialState = {
   selectedUser: null,
   userCreated: false,
   relationCreated: false,
+  updateFinished: false,
 };
 
 export default baseReducer(initialState, {
@@ -21,7 +22,6 @@ export default baseReducer(initialState, {
     };
   },
   [RelationAction.ADD_RELATION_FINISHED](state, action) {
-    console.log(action, "relation nu che");
     let newUsers = state.users.map((user) => {
       if (user._id === action.payload.firstUser._id) {
         return { ...user, ...action.payload.firstUser };
@@ -34,10 +34,29 @@ export default baseReducer(initialState, {
       relationCreated: !!action.payload,
     };
   },
+  [RelationAction.UPDATE_DIRECT_RELATION_FINISHED](state, action) {
+    let newUsers = state.users.map((user) => {
+      if (user._id === action.payload.user._id) {
+        return { ...user, ...action.payload.user };
+      } else return user;
+    });
+
+    return {
+      ...state,
+      users: newUsers,
+      updateFinished: !!action.payload,
+    };
+  },
   [RelationAction.CREATE_USER_SUCCESS](state, action) {
     return {
       ...state,
       userCreated: !!action.payload,
+    };
+  },
+  [RelationAction.UPDATE_SUCCESS](state, action) {
+    return {
+      ...state,
+      updateFinished: !!action.payload,
     };
   },
   [RelationAction.CREATE_RELATION_SUCCESS](state, action) {

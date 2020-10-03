@@ -9,5 +9,7 @@ class RelationSelector {
   static SelectUserCreated = (state) => state?.users?.userCreated;
 
   static SelectRelationCreated = (state) => state?.users?.relationCreated;
+
+  static SelectRelationUpdateFinished = (state) => state?.users?.updateFinished;
 }
 export default RelationSelector;

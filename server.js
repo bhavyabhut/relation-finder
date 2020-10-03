@@ -13,19 +13,20 @@ app.use(cors());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-
-// static
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-  );
-}
-
 //constants
 const port = process.env.PORT_NUM || 5000;
 const apiVersion = process.env.API_VERSION || "/v1";
+
+app.use(apiVersion, relation);
+
+// static;
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+//
+//   app.get("*", (req, res) =>
+//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+//   );
+// }
 
 //database connection
 
@@ -40,8 +41,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("database connect....");
 });
-
-app.use(apiVersion, relation);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);

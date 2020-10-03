@@ -30,7 +30,6 @@ async function doRequest(restRequest, config, isAuthenticated = true) {
       axios(axiosRequestConfig),
       doDelay(),
     ]);
-
     return {
       ...axiosResponse.data,
     };

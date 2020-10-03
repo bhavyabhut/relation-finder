@@ -10,7 +10,7 @@ class RelationEffects {
     return post(api.USERS, user);
   }
 
-  static updateSite({ user, userId }) {
+  static update({ user, userId }) {
     return patch(api.USER.replace(":userId", userId), user);
   }
 

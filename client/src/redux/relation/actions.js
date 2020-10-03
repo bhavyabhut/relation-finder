@@ -12,8 +12,14 @@ const RelationAction = {
   ADD_RELATION: "relation/ADD_RELATION",
   ADD_RELATION_FINISHED: "relation/ADD_RELATION_FINISHED",
   CREATE_RELATION_SUCCESS: "relation/CREATE_RELATION_SUCCESS",
+  UPDATE_DIRECT_RELATION: "relation/UPDATE_DIRECT_RELATION",
+  UPDATE_DIRECT_RELATION_FINISHED: "relation/UPDATE_DIRECT_RELATION_FINISHED",
+  UPDATE_SUCCESS: "relation/UPDATE_SUCCESS",
   addRelation(relation) {
     return createAction(this.ADD_RELATION, relation);
+  },
+  updateUser(user) {
+    return createAction(this.UPDATE_DIRECT_RELATION, user);
   },
   selectSite(site) {
     return createAction(this.SELECT_USER, site);
