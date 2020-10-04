@@ -5,8 +5,10 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
+    "client": "npm start --prefic client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "installtion": "npm install && npm install --prefix client"
   },
   "dependencies": {
     "cors": "^2.8.5",
