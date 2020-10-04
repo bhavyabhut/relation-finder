@@ -11,7 +11,7 @@ import AlertError from "../../../component/AlertError";
 const AddRelationButton = () => {
   const [error, setError] = useState(false);
   const [modal, isModal] = useState(false);
-  const [ans, setAns] = useState({ done: false, msg: null });
+  const [ans, setAns] = useState({ done: false, msg: [] });
 
   const loading = useSelector((state) =>
     requestingSelector(state, [RelationAction.ADD_RELATION])
@@ -44,41 +44,39 @@ const AddRelationButton = () => {
       firstUser.otherRelation?.length === 0 &&
       secondUser.otherRelation?.length === 0
     ) {
-      setAns({ done: true, msg: "No relation between those people" });
+      setAns({ done: true, msg: [] });
       return;
     }
-
-    const checkedId = [];
+    let ans = [];
+    let finalAns = [];
+    let currentIds = [];
     const find = (id, matchId) => {
-      if (checkedId.includes(id)) {
-        console.log("terminer");
-        return;
-      }
-      checkedId.push(id);
-      if (!id) {
-        console.log("terminet");
-        return;
-      }
-      const a = users
-        .filter((user) => user._id === id)[0]
-        .otherRelation?.filter(
-          (relation) => relation?.relationWith === matchId
+      if (id) {
+        const selectedUser = users.filter((user) => user._id === id)[0];
+        const matchedUser = users.filter((user) => user._id === matchId)[0];
+
+        currentIds = selectedUser.otherRelation.map(
+          (relation) => relation.relationWith
         );
-      if (a?.length > 0) {
-        console.log("ha moj mdi gyu ne ");
-        return;
-      }
-      const b = users
-        ?.filter((user) => user._id === id)[0]
-        ?.otherRelation?.map((user) => {
-          find(user?.relationWith);
+        ans.push(selectedUser);
+        if (currentIds.includes(matchId)) {
+          finalAns.push([...ans, matchedUser]);
+          return;
+        }
+        currentIds.forEach((current) => {
+          find(current, matchId);
+          ans = [];
         });
+        return "No Relation";
+      }
     };
     if (firstUser.otherRelation.length !== 0) {
       find(firstId, secondId);
-    } else find(secondId, firstId);
+    } else {
+      find(secondId, firstId);
+    }
+    setAns({ done: true, msg: finalAns });
   };
-
   return (
     <>
       <AddButton onClick={() => isModal(true)} name="Show Relation" small />
@@ -118,7 +116,18 @@ const AddRelationButton = () => {
           </Form.Item>
         </Form>
         {error ? <AlertError error="select proper value" /> : null}
-        {ans.done ? ans.msg : null}
+        {ans.done
+          ? ans.msg.length === 0
+            ? "No relation between two people"
+            : ans.msg.map((li) => (
+                <div className="mt-3 font-weight-bold">
+                  {li?.map((nested, index) => {
+                    if (index === li.length - 1) return nested.name;
+                    else return `${nested.name}  -->`;
+                  })}
+                </div>
+              ))
+          : null}
       </Modal>
     </>
   );

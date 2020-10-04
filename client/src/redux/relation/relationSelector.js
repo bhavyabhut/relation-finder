@@ -11,5 +11,8 @@ class RelationSelector {
   static SelectRelationCreated = (state) => state?.users?.relationCreated;
 
   static SelectRelationUpdateFinished = (state) => state?.users?.updateFinished;
+
+  static SelectNames = (state, arrayOfId) =>
+    state?.users?.users.map((user) => arrayOfId.includes(user._id));
 }
 export default RelationSelector;
