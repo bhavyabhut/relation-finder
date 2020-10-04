@@ -7,6 +7,7 @@ import RelationAction from "../../../redux/relation/actions";
 import requestingSelector from "../../../redux/requesting/requestingSelector";
 import RelationSelector from "../../../redux/relation/relationSelector";
 import AlertError from "../../../component/AlertError";
+import StatusLabel from "../../../component/OtherRealation";
 
 const AddRelationButton = () => {
   const [error, setError] = useState(false);
@@ -116,18 +117,35 @@ const AddRelationButton = () => {
           </Form.Item>
         </Form>
         {error ? <AlertError error="select proper value" /> : null}
-        {ans.done
-          ? ans.msg.length === 0
-            ? "No relation between two people"
-            : ans.msg.map((li) => (
-                <div className="mt-3 font-weight-bold">
-                  {li?.map((nested, index) => {
-                    if (index === li.length - 1) return nested.name;
-                    else return `${nested.name}  -->`;
-                  })}
-                </div>
-              ))
-          : null}
+        {ans.done ? (
+          ans.msg.length === 0 ? (
+            <div className="font-weight-bold text-danger">
+              No relation between two people
+            </div>
+          ) : (
+            ans.msg.map((li, mainIndex) => (
+              <div className="mt-3 font-weight-bold text-dark">
+                {li?.map((nested, index) => {
+                  if (index === 0)
+                    return (
+                      <>
+                        {mainIndex + 1}) <StatusLabel status={nested.name} />
+                        -->
+                      </>
+                    );
+                  else if (index === li.length - 1)
+                    return <StatusLabel status={nested.name} />;
+                  else
+                    return (
+                      <>
+                        <StatusLabel status={nested.name} /> -->
+                      </>
+                    );
+                })}
+              </div>
+            ))
+          )
+        ) : null}
       </Modal>
     </>
   );

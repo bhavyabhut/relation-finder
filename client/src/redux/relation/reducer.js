@@ -7,6 +7,7 @@ const initialState = {
   userCreated: false,
   relationCreated: false,
   updateFinished: false,
+  errors: [],
 };
 
 export default baseReducer(initialState, {
@@ -33,6 +34,12 @@ export default baseReducer(initialState, {
       users: newUsers,
       relationCreated: !!action.payload,
     };
+  },
+  [RelationAction.SET_ERROR](state, action) {
+    return { ...state, errors: [action.payload, ...state.errors] };
+  },
+  [RelationAction.REMOVE_ERROR](state, action) {
+    return { ...state, errors: action.payload };
   },
   [RelationAction.UPDATE_DIRECT_RELATION_FINISHED](state, action) {
     let newUsers = state.users.map((user) => {

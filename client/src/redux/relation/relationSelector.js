@@ -14,5 +14,7 @@ class RelationSelector {
 
   static SelectNames = (state, arrayOfId) =>
     state?.users?.users.map((user) => arrayOfId.includes(user._id));
+
+  static SelectErrors = (state) => state?.users?.errors;
 }
 export default RelationSelector;

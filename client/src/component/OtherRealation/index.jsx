@@ -6,12 +6,12 @@ export default function StatusLabel({ status }) {
   let num = 0;
   if (status) {
     num = status?.charCodeAt(0) + status?.charCodeAt(status?.length - 1);
-    color = tagColor[num % 16];
+    color = tagColor[num % 16] ? tagColor[num % 16] : "#912525";
   }
   return (
     <>
       <span
-        className="badge-pill text-capitalize text-white"
+        className="badge-pill text-capitalize text-white m-1"
         style={{ backgroundColor: color }}
       >
         {status || "Unknown"}

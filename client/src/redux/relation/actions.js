@@ -15,6 +15,8 @@ const RelationAction = {
   UPDATE_DIRECT_RELATION: "relation/UPDATE_DIRECT_RELATION",
   UPDATE_DIRECT_RELATION_FINISHED: "relation/UPDATE_DIRECT_RELATION_FINISHED",
   UPDATE_SUCCESS: "relation/UPDATE_SUCCESS",
+  SET_ERROR: "relation/SET_ERROR",
+  REMOVE_ERROR: "relation/REMOVE_ERROR",
   addRelation(relation) {
     return createAction(this.ADD_RELATION, relation);
   },

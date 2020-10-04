@@ -10,12 +10,15 @@ import RelationSidebar from "./RelationSidebar";
 import RelationSelector from "../../redux/relation/relationSelector";
 import AddRelationButton from "./Models/AddRelationButton";
 import ShowRelationButton from "./Models/ShowRelationButton";
+import AlertError from "../../component/AlertError";
 
 const Relation = () => {
   const selectedUser = useSelector(RelationSelector.SelectSelectedUser);
+  const errors = useSelector(RelationSelector.SelectErrors);
 
   return (
     <div className="height-100p d-flex flex-column pt-5">
+      {errors.length !== 0 ? <AlertError error={errors} /> : null}
       <SubBar
         title="User"
         dedicatedButton={<AddUserButton />}

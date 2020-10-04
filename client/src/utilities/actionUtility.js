@@ -1,5 +1,6 @@
 import { store } from "../index";
 import RequestingActions from "../redux/requesting/actions";
+import RelationAction from "../redux/relation/actions";
 
 export function createAction(
   type,
@@ -23,12 +24,13 @@ export async function runEffect(action, effect, ...args) {
     )
   );
   const model = await effect(...args);
-  const isError = !model?.success;
+  console.log(model, "model");
+  const isError = model ? !model?.success : true;
+  if (!model) dispatch(createAction(RelationAction.SET_ERROR, "Network error"));
+  else if (model?.success)
+    dispatch(createAction(RelationAction.REMOVE_ERROR, []));
   dispatch(
-    createAction(`${actionType}_FINISHED`, model.data || model, isError, {
-      ...model.metadata,
-      ...meta,
-    })
+    createAction(`${actionType}_FINISHED`, model?.data || model, isError)
   );
   // Set Requesting of the action to false
   dispatch(
@@ -39,7 +41,7 @@ export async function runEffect(action, effect, ...args) {
       meta
     )
   );
-  return model.data || model;
+  return model?.data || model;
 }
 
 export const getKeyForAction = (actionType, scope) =>
