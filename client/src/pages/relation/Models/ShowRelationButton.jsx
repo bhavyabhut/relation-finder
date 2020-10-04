@@ -7,7 +7,7 @@ import RelationAction from "../../../redux/relation/actions";
 import requestingSelector from "../../../redux/requesting/requestingSelector";
 import RelationSelector from "../../../redux/relation/relationSelector";
 import AlertError from "../../../component/AlertError";
-import StatusLabel from "../../../component/OtherRealation";
+import StatusLabel from "../../../component/StatusLabel";
 
 const AddRelationButton = () => {
   const [error, setError] = useState(false);

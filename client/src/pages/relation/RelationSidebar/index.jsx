@@ -6,8 +6,8 @@ import SideBar from "../../../component/SideBar/SideBar";
 import RelationSelector from "../../../redux/relation/relationSelector";
 import RelationAction from "../../../redux/relation/actions";
 import { timestampToLocale } from "../../../utilities/date";
-import OtherShowRelation from "./Other";
-import StatusLabel from "../../../component/OtherRealation";
+import OtherRelationShow from "./OtherRelationShow";
+import StatusLabel from "../../../component/StatusLabel";
 import Editable from "../../../component/Editable/Editable";
 import requestingSelector from "../../../redux/requesting/requestingSelector";
 
@@ -81,7 +81,7 @@ const RelationSidebar = () => {
                     <strong>Other Relation: </strong>
                   </td>
                   <td className="text-dark">
-                    <OtherShowRelation
+                    <OtherRelationShow
                       otherRelationArr={selectedUser.otherRelation}
                     />
                   </td>
@@ -91,7 +91,7 @@ const RelationSidebar = () => {
                     <strong>Created: </strong>
                   </td>
                   <td className="text-dark">
-                    {timestampToLocale(selectedUser.createdDate)}
+                    {timestampToLocale(selectedUser.createdAt)}
                   </td>
                 </tr>
               </div>
