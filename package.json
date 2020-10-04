@@ -1,9 +1,10 @@
 {
   "name": "Relation_Finder",
   "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node server",
+    "server": "nodemon server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
@@ -16,6 +17,6 @@
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "14.1.0"
   }
 }
