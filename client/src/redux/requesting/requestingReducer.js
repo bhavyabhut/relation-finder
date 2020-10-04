@@ -1,9 +1,9 @@
-import BaseReducer from '../../utilities/baseReducer'
+import MainReducer from '../../utilities/mainReducer'
 import RequestingActions from './actions'
 import { getKeyForAction } from '../../utilities/actionUtility'
 
 const initialState = {}
-export default BaseReducer(
+export default MainReducer(
   initialState,
   {
     [RequestingActions.SET_REQUESTING](state, action) {

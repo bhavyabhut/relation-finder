@@ -1,6 +1,6 @@
 import AppActions from "../redux/actions";
 
-export default function BaseReducer(initialState, methods, allowReset = true) {
+export default function MainReducer(initialState, methods, allowReset = true) {
   return (state = initialState, action) => {
     // if the action type is used for a method name then this be a reference to it.
     const method = methods[action.type];

@@ -1,4 +1,4 @@
-import baseReducer from "../../utilities/baseReducer";
+import baseReducer from "../../utilities/mainReducer";
 import RelationAction from "./actions";
 
 const initialState = {
