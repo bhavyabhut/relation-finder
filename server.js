@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 //constants
-const port = process.env.PORT_NUM || 5000;
+const port = process.env.PORT || 5000;
 const apiVersion = process.env.API_VERSION || "/v1";
 
 app.use(apiVersion, relation);
