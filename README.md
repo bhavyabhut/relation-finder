@@ -1,7 +1,7 @@
 # Relation Finder
 User can add people with relation and show connection between those people
 
-**[Live]('https://relation-find.herokuapp.com/') demo**
+## [Live](https://relation-find.herokuapp.com/) demo
 
 #### Technology
 - Mongodb
